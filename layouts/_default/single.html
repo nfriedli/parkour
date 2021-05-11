@@ -1,0 +1,20 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+{{ with .Params.korper }}Körper: {{ . }}{{ end }} / 
+{{ with .Params.psyche }}Psyche: {{ . }}{{ end }} / 
+{{ with .Params.kreativitat}}Kreativität: {{ . }}{{ end }} /
+{{ with .Params.personlichkeit }}Persönlichkeit: {{ . }}{{ end }}
+
+{{ .Content }}
+
+{{ $related := .Site.RegularPages.Related . }}
+{{ with $related }}
+<h3>Related</h3>
+<ul>
+	{{ range . }}
+	<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+	{{ end }}
+</ul>
+{{ end }}
+
+{{ end }}
